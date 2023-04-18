@@ -1,6 +1,10 @@
 package entity
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/google/uuid"
+)
 
 type Chatconfig struct {
 	Model            *Model
@@ -24,8 +28,26 @@ type Chat struct {
 	Config               *Chatconfig
 }
 
-func (c *Chat) Validate() error {
+func NewChat(userID string, InitialSystemMessage *Message, chatconfig *Chatconfig) (*Chat, error) {
+	chat := &Chat {
+		ID: 		uuid.New().String(),
+		UserID: userID,
+		InitialSystemMessage: InitialSystemMessage,
+		Status: "active",
+		Config: chatconfig,
+		TokenUsage: 0,
+	}
 	
+	chat.AddMessage(InitialSystemMessage)
+
+	if err:= chat.Validate(); err != nil {
+		return nil, err
+	}
+	return chat, nil
+}
+
+func (c *Chat) Validate() error {
+
 	if c.UserID == "" {
 			return errors.New(("user id is empty"))
 	}
