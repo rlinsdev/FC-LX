@@ -1,7 +1,10 @@
 package chatcompletionstream
 
 import (
-	"github.com/rlinsdev/fclx/chatservice/internal/domain/gateway"
+	"context"
+	"errors"
+
+	"github.com/rlinsdev/FC-LX/tree/main/ChatService/internal/domain/gateway"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -36,11 +39,31 @@ type ChatCompletionOutputDTO struct {
 	Content		string
 }
 
-
-
 func NewChatCompletionUseCase(chatGateway gateway.ChatGateway, openAiClient *openai.Client) *ChatCompletionUseCase {
 	return &ChatCompletionUseCase{
 		chatGateway: chatGateway,
 		OpenAiClient: openAiClient,
+	}
+}
+
+func (uc *ChatCompletionUseCase) Execute(ctx context.Context, input ChatCompletionInputDTO) (*ChatCompletionOutputDTO, error) {
+	// Existent chat or new chat?
+	chat, err :=uc.chatGateway.FindChatById(ctx, input.ChatID)
+	
+	if err != nil {
+		if err.Error() == "chat not found" {
+			// Create a new chat
+			chat, err = createNewChat(input)
+			if err != nil {
+				return nil, errors.New("Error creating chat:" + err.Error())
+			}
+			// Save on DB
+			err = uc.chatGateway.CreateChat(ctx, chat)
+			if err != nil {
+				return nil, errors.New("error on saving new Chat: "+err.Error())
+			}
+		} else {
+			return nil, errors.New("error fetchin existing chat: "+ err.Error())
+		}
 	}
 }
