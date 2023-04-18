@@ -5,7 +5,9 @@
 
 ### Commands:
 ```Bash
-$ go mod init github.com/rlinsdev/fclx/chatservice
+$ go mod init github.com/rlinsdev/fclx/chatservice,
+# To install github.com/google/uuid
+$ /ChatService> go mod tidy 
 ```
 
 
