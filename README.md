@@ -3,11 +3,14 @@
 ## Chat Service
 * GoLang
 
-### Commands:
+### Commands ChatService:
 ```Bash
 $ go mod init github.com/rlinsdev/fclx/chatservice,
 # To install github.com/google/uuid
-$ /ChatService> go mod tidy 
+$ /ChatService> go mod tidy
+# To install tiktoken_go "github.com/j178/tiktoken-go" 
+$ /ChatService> go mod tidy
+
 ```
 
 
