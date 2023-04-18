@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 
+	"github.com/rlinsdev/FC-LX/tree/main/ChatService/internal/domain/entity"
 	"github.com/rlinsdev/FC-LX/tree/main/ChatService/internal/domain/gateway"
 	"github.com/sashabaranov/go-openai"
 )
@@ -14,13 +15,13 @@ type ChatCompletionUseCase struct {
 }
 
 type ChatCompletionConfigInputDTO struct {
-	Mode 							string
+	Model 				string
 	ModelMaxTokenx		int
-	Temperature				float32
-	TopP							float32
-	N									float32
-	Stop							[]string
-	MaxTokens					int
+	Temperature			float32
+	TopP				float32
+	N					float32
+	Stop				[]string
+	MaxTokens			int
 	PresencePenalty 	float32
 	FrequencyPenalty 	float32
 	InitialSystemMessage string
@@ -29,7 +30,7 @@ type ChatCompletionConfigInputDTO struct {
 type ChatCompletionInputDTO struct {
 	ChatID			string
 	UserID			string
-	UserMessage	string
+	UserMessage		string
 	Config			ChatCompletionConfigInputDTO
 }
 
@@ -66,4 +67,27 @@ func (uc *ChatCompletionUseCase) Execute(ctx context.Context, input ChatCompleti
 			return nil, errors.New("error fetchin existing chat: "+ err.Error())
 		}
 	}
+}
+
+func createNewChat(input ChatCompletionInputDTO) (*entity.Chat, error) {
+	model := entity.NewModel(input.Config.Model, input.Config.ModelMaxTokenx)
+	chatConfig := &entity.Chatconfig{
+		Temperature: 		input.Config.Temperature,
+		TopP: 				input.Config.TopP,
+		N:					int(input.Config.N),
+		Stop: 				input.Config.Stop,
+		MaxTokens: 			input.Config.MaxTokens,
+		PresencePenalty: 	input.Config.PresencePenalty,
+		FrequencyPenalty: 	input.Config.FrequencyPenalty,
+		Model:				model,
+	}
+	initialMessage, err := entity.NewMessage("system", input.Config.InitialSystemMessage, model)
+	if err != nil {
+		return nil, errors.New("Error on creating initial message:" + err.Error())
+	}
+	chat, err := entity.NewChat(input.UserID, initialMessage, chatConfig)
+	if err != nil {
+		return nil, errors.New("error creating new chat: "+ err.Error())
+	}
+	return chat, nil
 }
