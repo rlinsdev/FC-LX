@@ -67,6 +67,22 @@ func (uc *ChatCompletionUseCase) Execute(ctx context.Context, input ChatCompleti
 			return nil, errors.New("error fetchin existing chat: "+ err.Error())
 		}
 	}
+	userMessage, err := entity.NewMessage("user", input.UserMessage, chat.Config.Model)
+	if err != nil {
+		return nil, errors.New("error creating user message:" + err.Error())
+	}
+	err = chat.AddMessage(userMessage)
+	if err != nil {
+		return nil, errors.New("error adding new message: " + err.Error())
+	}
+
+	messages := []openai.ChatCompletionMessage{}
+	for _, msg := range chat.Messages {
+		messages = append(messages, openai.ChatCompletionMessage{
+			Role: msg.Role,
+			Content: msg.Content,
+		})
+	}
 }
 
 func createNewChat(input ChatCompletionInputDTO) (*entity.Chat, error) {
