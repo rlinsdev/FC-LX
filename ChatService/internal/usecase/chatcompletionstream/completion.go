@@ -23,6 +23,13 @@ type ChatCompletionConfigInputDTO struct {
 	InitialSystemMessage string
 }
 
+type ChatCompletionInputDTO struct {
+	ChatID			string
+	UserID			string
+	UserMessage	string
+	Config			ChatCompletionConfigInputDTO
+}
+
 func NewChatCompletionUseCase(chatGateway gateway.ChatGateway, openAiClient *openai.Client) *ChatCompletionUseCase {
 	return &ChatCompletionUseCase{
 		chatGateway: chatGateway,
