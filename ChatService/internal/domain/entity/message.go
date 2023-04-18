@@ -46,6 +46,10 @@ func (m *Message) Validate() error {
 	if m.CreatedAt.IsZero() {
 		return errors.New("Invalid created at")
 	}
-	
 	return nil
 }
+
+func (m *Message) GetQtdTokens() int {
+	return m.Tokens
+}
+
