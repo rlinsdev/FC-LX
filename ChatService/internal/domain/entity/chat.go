@@ -25,9 +25,19 @@ type Chat struct {
 }
 
 func (c *Chat) Validate() error {
+	
 	if c.UserID == "" {
 			return errors.New(("user id is empty"))
 	}
+
+	if c.Status != "active" && c.Status != "ended" {
+		return errors.New("invalid Status")
+	}
+
+	if c.Config.Temperature < 0 || c.Config.Temperature > 2 {
+		return errors.New("Invalid temperature")
+	}
+	return nil
 }
 
 func (c *Chat) AddMessage(m *Message) error {
