@@ -24,6 +24,9 @@ func NewMessage(role string, content string, model *Model) (*Message, error) {
 		Content: 	content,
 		Model:		model,
 	}
+	if err := msg.Validate(); err != nil {
+		return nil, err
+	}
 	return msg, nil
 }
 
