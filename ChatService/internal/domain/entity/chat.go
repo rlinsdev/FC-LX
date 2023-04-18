@@ -5,9 +5,12 @@ type Chatconfig struct {
 }
 
 type Chat struct {
-	ID         string
-	UserID     string
-	Status     string
-	TokenUsage int
-	Config     *Chatconfig
+	ID                   string
+	UserID               string
+	InitialSystemMessage *Message
+	Messages             []*Message
+	ErasedMessages       []*Message
+	Status               string
+	TokenUsage           int
+	Config               *Chatconfig
 }
