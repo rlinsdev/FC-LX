@@ -22,10 +22,12 @@ $ /ChatService> go mod tidy
 ## Links Docs
 * [OpenAI API docs](https://platform.openai.com/docs/api-reference/introduction)
 * [OpenAI](https://openai.com/)
+* [SQLC.dev](https://sqlc.dev/)
 
 ## Links Course
 * [FullCycle Page](https://fcexperience.fullcycle.com.br/evento/)
 * [FullCycle YouTube - 1](https://www.youtube.com/watch?v=UugkE-OeE4E)
+* [FullCycle YouTube - 2](https://www.youtube.com/watch?v=lstRv2q-sOI)
 * [Repo URL](https://github.com/devfullcycle/fclx)
 
 
