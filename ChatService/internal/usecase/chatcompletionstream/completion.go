@@ -8,7 +8,7 @@ import (
 
 	"github.com/rlinsdev/FC-LX/tree/main/ChatService/internal/domain/entity"
 	"github.com/rlinsdev/FC-LX/tree/main/ChatService/internal/domain/gateway"
-	"github.com/sashabaranov/go-openai"
+	openai "github.com/sashabaranov/go-openai"
 )
 
 type ChatCompletionConfigInputDTO struct {

@@ -31,10 +31,10 @@ type Chat struct {
 func NewChat(userID string, InitialSystemMessage *Message, chatconfig *Chatconfig) (*Chat, error) {
 	chat := &Chat {
 		ID: 		uuid.New().String(),
-		UserID: userID,
+		UserID: 	userID,
 		InitialSystemMessage: InitialSystemMessage,
-		Status: "active",
-		Config: chatconfig,
+		Status: 	"active",
+		Config: 	chatconfig,
 		TokenUsage: 0,
 	}
 	

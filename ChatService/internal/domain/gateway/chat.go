@@ -3,6 +3,7 @@ package gateway
 import (
 	"context"
 
+	//github.com/devfullcycle/fclx/chatservice/internal/domain/entity
 	"github.com/rlinsdev/FC-LX/tree/main/ChatService/internal/domain/entity"
 )
 
