@@ -8,14 +8,20 @@
 * **Gateway** Contracts defineds by domain to access external. Works like interfaces in OOP
 * **UseCase** Intenção do usuário
 
-### Commands ChatService:
+### 1 - Commands ChatService:
 ```Bash
 $ go mod init github.com/rlinsdev/FC-LX/tree/main/ChatService,
 # To install github.com/google/uuid
 $ /ChatService> go mod tidy
 # To install tiktoken_go "github.com/j178/tiktoken-go" 
 $ /ChatService> go mod tidy
+```
 
+### 2 - Commands migration:
+```Bash
+# Install migration on go
+# Migration to MySql 
+$ /ChatService> migrate create -ext=mysql -dir=sql/migrations -seq init
 ```
 
 
