@@ -20,8 +20,11 @@ $ /ChatService> go mod tidy
 ### 2 - Commands migration:
 ```Bash
 # Install migration on go
+go install github.com/kyleconroy/sqlc/cmd/sqlc@latest
 # Migration to MySql 
 $ /ChatService> migrate create -ext=mysql -dir=sql/migrations -seq init
+# Generate files in infra/db
+$ /ChatService> sqlc generate
 ```
 
 
