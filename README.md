@@ -10,7 +10,7 @@
 
 ### Commands ChatService:
 ```Bash
-$ go mod init github.com/rlinsdev/fclx/chatservice,
+$ go mod init github.com/rlinsdev/FC-LX/tree/main/ChatService,
 # To install github.com/google/uuid
 $ /ChatService> go mod tidy
 # To install tiktoken_go "github.com/j178/tiktoken-go" 
@@ -26,5 +26,6 @@ $ /ChatService> go mod tidy
 ## Links Course
 * [FullCycle Page](https://fcexperience.fullcycle.com.br/evento/)
 * [FullCycle YouTube - 1](https://www.youtube.com/watch?v=UugkE-OeE4E)
+* [Repo URL](https://github.com/devfullcycle/fclx)
 
 
