@@ -7,6 +7,7 @@
 * **Domain** Core of application. Business rules
 * **Gateway** Contracts defineds by domain to access external. Works like interfaces in OOP
 * **UseCase** Intenção do usuário
+* **RRPC** Faster then Rest. Work with stream
 
 ### 1 - Commands ChatService:
 ```Bash
@@ -15,6 +16,11 @@ $ go mod init github.com/rlinsdev/FC-LX/tree/main/ChatService,
 $ /ChatService> go mod tidy
 # To install tiktoken_go "github.com/j178/tiktoken-go" 
 $ /ChatService> go mod tidy
+```
+### 2 Run:
+```Bash
+# To run:
+$ go run cmd/chatservsice/main.go 
 ```
 
 ### 2 - Commands migration:
