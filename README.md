@@ -33,6 +33,10 @@ $ /ChatService> migrate create -ext=mysql -dir=sql/migrations -seq init
 $ /ChatService> sqlc generate
 ```
 
+### 3 NestJs:
+```Bash
+$ npx create-next-app --typescript 
+```
 
 ## Links Docs
 * [OpenAI API docs](https://platform.openai.com/docs/api-reference/introduction)
