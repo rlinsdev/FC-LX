@@ -76,7 +76,7 @@ func main() {
 		configs.AuthToken,
 		streamChannel,
 	)
-	go grpcServer.Start()
+	go grpcServer.Start() // go in front - new thread
 
 	webserver := webserver.NewWebServer(":" + configs.WebServerPort)
 	webserverChatHandler := web.NewWebChatGPTHandler(*usecase, chatConfig, configs.AuthToken)
