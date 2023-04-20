@@ -38,6 +38,8 @@ $ /ChatService> sqlc generate
 * [OpenAI API docs](https://platform.openai.com/docs/api-reference/introduction)
 * [OpenAI](https://openai.com/)
 * [SQLC.dev](https://sqlc.dev/)
+* [Protocol Buffers](https://protobuf.dev/)
+
 
 ## Links Course
 * [FullCycle Page](https://fcexperience.fullcycle.com.br/evento/)
